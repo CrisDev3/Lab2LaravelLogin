@@ -63,7 +63,7 @@ Esto generó las tablas necesarias para el sistema de autenticación (ej. `users
 
 ## 👀 Resultado  
 
-📷 ![Resultado del Login](imagenes/Resultado login.png)  
+![Resultado del Login](imagenes/resultado.png)  
 
 ---
 
