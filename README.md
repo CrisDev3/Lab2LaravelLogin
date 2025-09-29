@@ -1,61 +1,107 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# 📝 Laboratorio #2 – Implementación del Login en Laravel  
 
-## About Laravel
+## 📌 Introducción  
+Este laboratorio tiene como objetivo comprender y documentar la implementación del **login en Laravel**, aplicando el patrón de arquitectura **Modelo-Vista-Controlador (MVC)**. A través de esta práctica, se consolidan los conocimientos sobre controladores, modelos, rutas y vistas, así como el uso de migraciones y configuraciones básicas para el despliegue de un módulo de autenticación.  
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Las principales carpetas involucradas en la arquitectura son:  
+- **`app/Models`** → Define los modelos que representan las tablas de la base de datos.  
+- **`app/Http/Controllers`** → Contiene los controladores que gestionan la lógica del negocio.  
+- **`routes/web.php`** → Define las rutas web del proyecto.  
+- **`resources/views`** → Contiene las vistas (plantillas Blade) utilizadas en el frontend.  
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+El objetivo del laboratorio es **configurar y ejecutar un login funcional en Laravel**, documentando el proceso y las dificultades enfrentadas.  
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## ⚙️ Requisitos Previos  
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- ![PHP](https://img.shields.io/badge/PHP-8.4.0-blue?logo=php)  
+- ![Composer](https://img.shields.io/badge/Composer-2.8.11-orange?logo=composer)  
+- ![Laravel](https://img.shields.io/badge/Laravel-12-red?logo=laravel)  
+- ![VSCode](https://img.shields.io/badge/Editor-VSCode-blue?logo=visualstudiocode)  
+- ![Wamp](https://img.shields.io/badge/WampServer-green?logo=apache)  
+- ![MySQL](https://img.shields.io/badge/MySQL/MariaDB-Database-yellow?logo=mysql)  
+- Sistema Operativo: **Windows 10**  
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🚀 Flujo de Instalación  
 
-## Laravel Sponsors
+Los comandos utilizados para crear y configurar el proyecto fueron:  
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+laravel new nombreDelProyecto
+npm install
+npm run build
+composer run dev
+php artisan config:clear
+php artisan config:cache
+php artisan migrate
+composer require laravel/ui
+php artisan ui bootstrap
+php artisan ua bootstrap -auth
+```
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 🛠️ Migraciones y Base de Datos  
 
-## Contributing
+El entorno del proyecto fue configurado en el archivo **`.env`**, donde se establecieron las credenciales de conexión a la base de datos.  
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Para la creación de las tablas se utilizaron los siguientes comandos:  
 
-## Code of Conduct
+```bash
+php artisan migrate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Esto generó las tablas necesarias para el sistema de autenticación (ej. `users`, `password_resets`, `failed_jobs`, etc.).  
 
-## Security Vulnerabilities
+📌 Se adjunta un **respaldo de la base de datos** dentro del repositorio.  
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 👀 Resultado  
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+📷 **  
+
+---
+
+## ⚡ Dificultades y Soluciones  
+
+Durante la ejecución del laboratorio, se presentaron las siguientes dificultades:  
+
+- **Dificultad 1**: Problema con la versión de PHP al crear proyectos.  
+  - ✅ Solución: Instalación de PHP 8.4 y edición de las variables de sistema.  
+
+- **Dificultad 2**: Error con **Xdebug** al cambiar de versión de PHP y Laravel.  
+  - ✅ Solución: Modificación del archivo `php.ini`, comentando la línea de Xdebug.  
+
+- **Dificultad 3**: Error en **Wamp** al reconocer la versión de PHP (intentaba acceder a la 8.1.31).  
+  - ✅ Solución: Descarga y descompresión manual de la versión 8.1.31 dentro del directorio de PHP de Wamp.  
+
+---
+
+## 📚 Referencias  
+
+- [YouTube – Laravel Login Tutorial](https://youtu.be/_Rsen6614Dg?si=wH2f0GiYjLP_NDMW)  
+- [YouTube – Laravel Autenticación](https://youtu.be/V34YjN_vQok?si=bExDYV9qH0l0Nkd2)  
+- [YouTube – Proyecto Laravel Completo](https://youtu.be/rn2LCOeNPds?si=zuDKYcwdXzZbOjhD)  
+
+---
+
+## 📅 Fecha de Ejecución del Laboratorio  
+**28 de septiembre de 2025**  
+
+---
+
+## 👤 Información del Desarrollador  
+
+Este laboratorio ha sido desarrollado por el estudiante de la **Universidad Tecnológica de Panamá**:  
+
+- **Nombre:** Cristopher Núñez  
+- **Correo:** cristopher.nunez@utp.ac.pa  
+- **Curso:** Ingeniería Web  
+- **Instructor del Laboratorio:** Ing. Irina Fong  
+
+---
